@@ -217,17 +217,17 @@ ret
 ;              swap(&arr[j], &arr[j+1]);
 ;}
 bubble:
-    push    eax
-    push    ebx
-    push    ecx
-    push    esi
+    push    eax             ; preserve eax
+    push    ebx             ; preserve ebx
+    push    ecx             ; preserve ecx
+    push    esi             ; preserve esi
 
     mov     esi,eax         ; esi : array
     xor     eax,eax         ; eax : i , j
                             ; ebx : tmp value
     dec     ecx             ; ecx : n-1
 
-outLoop:
+.outLoop:
     cmp     eax,ecx         ; eax stands for i
     jz      .end
     push    eax             ; preserve eax for outLoop
@@ -249,17 +249,16 @@ outLoop:
     pop     ecx             ; restore ecx(out_border) for outLoop
     pop     eax             ; restore eax(i) for outLoop
     inc     eax             ; i++
-    jmp     outLoop         ; outLoop
+    jmp     .outLoop         ; outLoop
 
 .end:
-    pop     esi
-    pop     ecx
-    pop     ebx
-    pop     eax
+    pop     esi             ; restore esi
+    pop     ecx             ; restore ecx
+    pop     ebx             ; restore ebx
+    pop     eax             ; restore eax
 ret
 
-
-; ----------------------------------------
+;-----------------------------------------
 ; void exit()
 ; Exit program and restore resources
 quit:

@@ -8,7 +8,7 @@
 
 %include 'functions.asm'
 SECTION .data
-	array	dd	10,9,8
+	array	dd	41,25,36,84,17,25,61,99
 	size	equ	($-array)/4
 	hint1	db	'Before sort: ',0h
 	hint2	db	'After sort : ',0h
